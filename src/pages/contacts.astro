@@ -34,6 +34,7 @@ import Layout from '../layouts/Layout.astro';
             <label for="message">Сообщение</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
+          <p class="privacy-disclaimer">Отправляя сообщение, вы соглашаетесь на обработку персональных данных в соответствии с <a href="/privacy-policy">политикой</a>.</p>
           <button type="submit" class="cta-button">Отправить</button>
         </form>
       </div>
@@ -117,6 +118,12 @@ import Layout from '../layouts/Layout.astro';
   }
   .cta-button:hover {
     background-color: rgb(var(--accent-dark));
+  }
+  .privacy-disclaimer {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: -1rem; /* Adjust margin to bring it closer to the button */
+    text-align: center;
   }
 
   /* Responsive Adjustments for Contacts Page */
