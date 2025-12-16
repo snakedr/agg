@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const images = [
+  'https://placehold.co/400x400/fdcb6e/333?text=Training',
+  'https://placehold.co/400x400/e17055/fff?text=Competition',
+  'https://placehold.co/400x400/d63031/fff?text=Team',
+  'https://placehold.co/400x400/a29bfe/fff?text=Stretching',
+  'https://placehold.co/400x400/0984e3/fff?text=Ribbon',
+  'https://placehold.co/400x400/00b894/fff?text=Joy',
+  'https://placehold.co/400x400/6c5ce7/fff?text=Pose',
+  'https://placehold.co/400x400/fab1a0/333?text=Group',
+  'https://placehold.co/400x400/ff7675/fff?text=Medals',
+];
+---
+
+<Layout title="Галерея">
+  <div class="container">
+    <h1>Наша галерея</h1>
+    <p class="subtitle">Моменты с тренировок и выступлений нашей команды.</p>
+    
+    <div class="gallery-grid">
+      {images.map(src => (
+        <div class="gallery-item">
+          <img src={src} alt="Фото из галереи" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: rgb(var(--accent-dark));
+  }
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #e0e0e0;
+    aspect-ratio: 1 / 1;
+  }
+</style>

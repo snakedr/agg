@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Расписание занятий">
+  <div class="container">
+    <h1>Расписание занятий</h1>
+    <p class="subtitle">Актуальное расписание на сезон 2025-2026. Выберите подходящую группу для вашего ребенка.</p>
+    
+    <div class="schedule-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Группа</th>
+            <th>Возраст</th>
+            <th>Дни недели</th>
+            <th>Время</th>
+            <th>Тренер</th>
+            <th>Зал</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Малыши</td>
+            <td>3-4 года</td>
+            <td>Пн, Ср</td>
+            <td>17:00 - 17:45</td>
+            <td>А. Петрова</td>
+            <td>Малый зал</td>
+          </tr>
+          <tr>
+            <td>Подготовительная</td>
+            <td>5-6 лет</td>
+            <td>Вт, Чт</td>
+            <td>17:00 - 18:00</td>
+            <td>А. Петрова</td>
+            <td>Малый зал</td>
+          </tr>
+          <tr>
+            <td>Младшая</td>
+            <td>7-9 лет</td>
+            <td>Пн, Ср, Пт</td>
+            <td>18:00 - 19:30</td>
+            <td>Е. Иванова</td>
+            <td>Большой зал</td>
+          </tr>
+          <tr>
+            <td>Средняя</td>
+            <td>10-12 лет</td>
+            <td>Вт, Чт, Сб</td>
+            <td>18:00 - 20:00</td>
+            <td>Е. Иванова</td>
+            <td>Большой зал</td>
+          </tr>
+          <tr>
+            <td>Старшая (команда)</td>
+            <td>13+ лет</td>
+            <td>Пн-Пт</td>
+            <td>16:00 - 18:00</td>
+            <td>Е. Иванова</td>
+            <td>Большой зал</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: rgb(var(--accent-dark));
+  }
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+  .schedule-table {
+    width: 100%;
+    overflow-x: auto; /* Для адаптивности на мобильных */
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  th, td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  thead {
+    background-color: rgb(var(--accent));
+    color: white;
+  }
+  th {
+    font-weight: bold;
+  }
+  tbody tr:hover {
+    background-color: #f6f6f6;
+  }
+</style>

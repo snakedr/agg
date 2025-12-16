@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Эстетическая гимнастика - Главная">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Откройте мир грации и красоты</h1>
+      <p>Приглашаем девочек от 3 лет на занятия по эстетической гимнастике. Первый урок - бесплатно!</p>
+      <a href="/contacts" class="cta-button">Записаться</a>
+    </div>
+  </div>
+
+  <section class="intro">
+    <h2>Добро пожаловать в нашу школу</h2>
+    <p>Мы - некоммерческая организация, посвященная развитию эстетической гимнастики. Наша миссия - помочь каждой девочке раскрыть свой потенциал, развить гибкость, артистизм и командный дух в дружелюбной и поддерживающей атмосфере.</p>
+  </section>
+
+  <section class="benefits">
+    <h2>Почему эстетическая гимнастика?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Здоровье и форма</h3>
+        <p>Укрепляет мышечный корсет, развивает гибкость и координацию.</p>
+      </div>
+      <div class="card">
+        <h3>Артистизм</h3>
+        <p>Развивает музыкальность, выразительность и чувство прекрасного.</p>
+      </div>
+      <div class="card">
+        <h3>Командный дух</h3>
+        <p>Учит работать в команде, доверять и поддерживать друг друга.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x600/a29bfe/ffffff?text=Gymnastics+Hero');
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .cta-button {
+    padding: 1rem 2rem;
+    background-color: rgb(var(--accent));
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  .cta-button:hover {
+    background-color: rgb(var(--accent-dark));
+  }
+  .intro, .benefits {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .intro h2, .benefits h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .intro p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+  }
+  .card h3 {
+    margin-top: 0;
+    color: rgb(var(--accent));
+  }
+</style>

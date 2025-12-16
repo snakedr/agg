@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="О нас">
+  <div class="container">
+    <section class="mission">
+      <h1>Наша миссия</h1>
+      <p>Мы верим в силу эстетической гимнастики для гармоничного развития личности. Наша цель — создать безопасное и вдохновляющее пространство, где каждая девочка может раскрыть свой творческий и физический потенциал, научиться работать в команде и обрести уверенность в себе. Мы стремимся прививать любовь к спорту, дисциплине и искусству с самого раннего возраста.</p>
+    </section>
+
+    <section class="history">
+      <h2>Наша история</h2>
+      <p>Наша некоммерческая организация была основана в 2015 году группой энтузиастов и бывших гимнасток. Все началось с небольшой группы из 10 девочек и одной большой мечты — сделать эстетическую гимнастику доступной для всех. Сегодня в нашей школе занимается более 100 спортсменок, которые регулярно участвуют и побеждают в региональных и национальных соревнованиях.</p>
+    </section>
+
+    <section class="coaches">
+      <h2>Наши тренеры</h2>
+      <div class="coach-grid">
+        <div class="coach-card">
+          <img src="https://placehold.co/150x150/dfe6e9/333333?text=Coach+1" alt="Тренер 1">
+          <h3>Екатерина Иванова</h3>
+          <p>Главный тренер, Мастер спорта по художественной гимнастике. Опыт работы с детьми - 10 лет.</p>
+        </div>
+        <div class="coach-card">
+          <img src="https://placehold.co/150x150/dfe6e9/333333?text=Coach+2" alt="Тренер 2">
+          <h3>Анна Петрова</h3>
+          <p>Тренер младшей группы, Кандидат в мастера спорта по эстетической гимнастике. Помогает малышам делать первые шаги.</p>
+        </div>
+        <div class="coach-card">
+          <img src="https://placehold.co/150x150/dfe6e9/333333?text=Coach+3" alt="Тренер 3">
+          <h3>Мария Сидорова</h3>
+          <p>Хореограф-постановщик, профессиональная танцовщица. Отвечает за артистизм и постановку программ.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  section {
+    margin-bottom: 4rem;
+  }
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: rgb(var(--accent-dark));
+  }
+  h1 {
+    font-size: 2.8rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+  }
+  p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  .coach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+  .coach-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    background-color: #e0e0e0;
+  }
+  .coach-card h3 {
+    margin-bottom: 0.5rem;
+    color: rgb(var(--accent));
+  }
+</style>

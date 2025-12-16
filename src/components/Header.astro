@@ -1,0 +1,48 @@
+<header>
+  <div class="logo">
+    <a href="/">
+      <img src="/logo-placeholder.svg" alt="Логотип" />
+      <span>Эстетическая Гимнастика</span>
+    </a>
+  </div>
+  <nav>
+    <a href="/">Главная</a>
+    <a href="/about">О нас</a>
+    <a href="/schedule">Расписание</a>
+    <a href="/gallery">Галерея</a>
+    <a href="/contacts">Контакты</a>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: rgb(var(--accent));
+  }
+</style>
