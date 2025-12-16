@@ -80,4 +80,48 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 0.5rem;
     color: rgb(var(--accent));
   }
+
+  /* Responsive Adjustments for About Page */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem; /* Reduce container padding on smaller screens */
+    }
+    section {
+      margin-bottom: 3rem; /* Reduce section margin */
+    }
+    h1 {
+      font-size: 2.2rem; /* Adjust heading size */
+    }
+    h2 {
+      font-size: 1.8rem; /* Adjust heading size */
+    }
+    p {
+      font-size: 1rem; /* Adjust paragraph size */
+    }
+    .coach-grid {
+      gap: 1.5rem; /* Reduce gap in coach grid */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0.5rem; /* Even less padding on very small screens */
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+    p {
+      font-size: 0.95rem;
+    }
+    .coach-card img {
+      width: 120px;
+      height: 120px;
+    }
+  }
 </style>

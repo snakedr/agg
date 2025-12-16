@@ -86,6 +86,7 @@ import Layout from '../layouts/Layout.astro';
     justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
+    flex-wrap: wrap; /* Allow cards to wrap */
   }
   .card {
     background-color: white;
@@ -93,9 +94,69 @@ import Layout from '../layouts/Layout.astro';
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 300px;
+    flex-basis: calc(33% - 2rem); /* Default for 3 cards per row */
   }
   .card h3 {
     margin-top: 0;
     color: rgb(var(--accent));
+  }
+
+  /* Responsive Adjustments for Index Page */
+  @media (max-width: 1024px) {
+    .card {
+      flex-basis: calc(50% - 2rem); /* 2 cards per row on medium screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 50vh; /* Slightly less height on mobile */
+      background-position: 75% center; /* Adjust background position */
+    }
+    .hero-text h1 {
+      font-size: 2.2rem;
+    }
+    .hero-text p {
+      font-size: 1rem;
+    }
+    .intro, .benefits {
+      padding: 2.5rem 1rem; /* Reduce vertical padding */
+    }
+    .intro h2, .benefits h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .intro p {
+      font-size: 1rem;
+    }
+    .cards {
+      gap: 1rem; /* Reduce gap between cards */
+    }
+    .card {
+      flex-basis: 100%; /* 1 card per row on small screens */
+      width: auto; /* Allow width to be flexible */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      height: 40vh;
+    }
+    .hero-text h1 {
+      font-size: 1.8rem;
+    }
+    .hero-text p {
+      font-size: 0.9rem;
+    }
+    .cta-button {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+    }
+    .intro, .benefits {
+      padding: 2rem 0.5rem;
+    }
+    .intro h2, .benefits h2 {
+      font-size: 1.8rem;
+    }
   }
 </style>

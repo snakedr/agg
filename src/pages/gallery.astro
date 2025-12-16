@@ -60,4 +60,38 @@ const images = [
     background-color: #e0e0e0;
     aspect-ratio: 1 / 1;
   }
+
+  /* Responsive Adjustments for Gallery Page */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem; /* Reduce container padding on smaller screens */
+    }
+    h1 {
+      font-size: 2.2rem; /* Adjust heading size */
+    }
+    .subtitle {
+      font-size: 1rem; /* Adjust subtitle size */
+      margin-bottom: 2rem;
+    }
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust minmax for smaller screens */
+      gap: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0.5rem; /* Even less padding on very small screens */
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+  }
 </style>
