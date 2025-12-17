@@ -1,16 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+// Updated data structure to support thumbnails and full-size images
 const images = [
-  'https://placehold.co/400x400/fdcb6e/333?text=Training',
-  'https://placehold.co/400x400/e17055/fff?text=Competition',
-  'https://placehold.co/400x400/d63031/fff?text=Team',
-  'https://placehold.co/400x400/a29bfe/fff?text=Stretching',
-  'https://placehold.co/400x400/0984e3/fff?text=Ribbon',
-  'https://placehold.co/400x400/00b894/fff?text=Joy',
-  'https://placehold.co/400x400/6c5ce7/fff?text=Pose',
-  'https://placehold.co/400x400/fab1a0/333?text=Group',
-  'https://placehold.co/400x400/ff7675/fff?text=Medals',
+  {
+    thumbnail: '/medalmini.webp',
+    full: '/medals.webp',
+    alt: 'Фото с медалями'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/fdcb6e/333?text=Training',
+    full: 'https://placehold.co/800x600/fdcb6e/333?text=Training',
+    alt: 'Фото с тренировки'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/e17055/fff?text=Competition',
+    full: 'https://placehold.co/800x600/e17055/fff?text=Competition',
+    alt: 'Фото с соревнований'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/d63031/fff?text=Team',
+    full: 'https://placehold.co/800x600/d63031/fff?text=Team',
+    alt: 'Командное фото'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/a29bfe/fff?text=Stretching',
+    full: 'https://placehold.co/800x600/a29bfe/fff?text=Stretching',
+    alt: 'Фото с растяжки'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/0984e3/fff?text=Ribbon',
+    full: 'https://placehold.co/800x600/0984e3/fff?text=Ribbon',
+    alt: 'Фото с лентой'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/00b894/fff?text=Joy',
+    full: 'https://placehold.co/800x600/00b894/fff?text=Joy',
+    alt: 'Радостные моменты'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/6c5ce7/fff?text=Pose',
+    full: 'https://placehold.co/800x600/6c5ce7/fff?text=Pose',
+    alt: 'Фото в позе'
+  },
+  {
+    thumbnail: 'https://placehold.co/400x400/fab1a0/333?text=Group',
+    full: 'https://placehold.co/800x600/fab1a0/333?text=Group',
+    alt: 'Групповое фото'
+  },
 ];
 ---
 
@@ -20,16 +57,54 @@ const images = [
     <p class="subtitle">Моменты с тренировок и выступлений нашей команды.</p>
     
     <div class="gallery-grid">
-      {images.map(src => (
-        <div class="gallery-item">
-          <img src={src} alt="Фото из галереи" loading="lazy" />
+      {images.map(image => (
+        <div class="gallery-item" data-full-src={image.full} data-alt={image.alt}>
+          <img src={image.thumbnail} alt={image.alt} loading="lazy" />
         </div>
       ))}
     </div>
   </div>
+
+  <!-- Lightbox Modal HTML -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="caption" class="caption"></div>
+  </div>
+
 </Layout>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('caption');
+    const closeBtn = document.querySelector('.close-btn');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        lightbox.style.display = 'block';
+        lightboxImg.src = item.dataset.fullSrc;
+        caption.innerHTML = item.dataset.alt;
+      });
+    });
+
+    const closeModal = () => {
+      lightbox.style.display = 'none';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
 <style>
+  /* Existing Styles */
   .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -51,6 +126,13 @@ const images = [
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
   }
+  .gallery-item {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  .gallery-item:hover {
+    transform: scale(1.03);
+  }
   .gallery-item img {
     width: 100%;
     height: 100%;
@@ -61,27 +143,76 @@ const images = [
     aspect-ratio: 1 / 1;
   }
 
-  /* Responsive Adjustments for Gallery Page */
+  /* Lightbox Styles */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+  }
+  .caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+  }
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .close-btn:hover,
+  .close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Responsive Adjustments */
   @media (max-width: 768px) {
     .container {
-      padding: 1rem; /* Reduce container padding on smaller screens */
+      padding: 1rem;
     }
     h1 {
-      font-size: 2.2rem; /* Adjust heading size */
+      font-size: 2.2rem;
     }
     .subtitle {
-      font-size: 1rem; /* Adjust subtitle size */
+      font-size: 1rem;
       margin-bottom: 2rem;
     }
     .gallery-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust minmax for smaller screens */
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 0.8rem;
+    }
+    .lightbox-content {
+      max-width: 90%;
     }
   }
 
   @media (max-width: 480px) {
     .container {
-      padding: 0.5rem; /* Even less padding on very small screens */
+      padding: 0.5rem;
     }
     h1 {
       font-size: 1.8rem;
@@ -91,7 +222,7 @@ const images = [
       margin-bottom: 1.5rem;
     }
     .gallery-grid {
-      grid-template-columns: 1fr; /* Single column on very small screens */
+      grid-template-columns: 1fr;
     }
   }
 </style>
